@@ -7,7 +7,9 @@ import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGO_DB || ''),
+    MongooseModule.forRoot(process.env.MONGO_DB || '', {
+      autoCreate: true,
+    }),
     ProductModule,
   ],
   controllers: [AppController],
