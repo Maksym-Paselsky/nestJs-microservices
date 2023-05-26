@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ProductModule } from './product/product.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -11,6 +12,7 @@ import { ConfigModule } from '@nestjs/config';
       autoCreate: true,
     }),
     ProductModule,
+    HttpModule,
   ],
   controllers: [AppController],
   providers: [AppService],

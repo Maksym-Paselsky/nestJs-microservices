@@ -20,7 +20,6 @@ export class ProductController {
 
   @Get()
   getAll() {
-    this.client.emit('hello', 'Hello from NestJS');
     return this.productService.findAll();
   }
 
@@ -38,6 +37,8 @@ export class ProductController {
       title,
       image,
     });
+
+    this.client.emit('product_created', product);
     return product;
   }
   @Put(':id')
@@ -60,5 +61,12 @@ export class ProductController {
   @Delete(':id')
   async deleteProduct(@Param('id') id: number) {
     return this.productService.delete(id);
+  }
+
+  @Post(':id/like')
+  async likeProduct(@Param('id') id: number) {
+    const product = await this.productService.findOne(id);
+    product.likes++;
+    return this.productService.update(id, product);
   }
 }

@@ -16,7 +16,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
           urls: [
             'amqps://odqxkjxu:4d8qjTb48baoMxj9dygTehTgUfdxqC7M@sparrow.rmq.cloudamqp.com/odqxkjxu',
           ],
-          queue: 'admin_queue',
+          queue: 'main_queue',
           queueOptions: {
             durable: false,
           },
